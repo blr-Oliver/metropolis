@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+
+	<class name="Shop" table="shop" batch-size="10">
+		<id name="id" column="id" unsaved-value="null" access="field">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="display_name" not-null="true" />
+		<property name="categoryId" column="id_category" not-null="true" insert="false" update="false" access="field" />
+		<property name="shortDescription" column="short_desc" not-null="false" length="500" />
+		<property name="description" not-null="false" length="2000" />
+
+		<many-to-one name="category" column="id_category" not-null="true" class="Category" lazy="false" fetch="join" />
+		<set name="tags" table="shop_tag" lazy="false" fetch="join" batch-size="100">
+			<key column="id_shop" />
+			<many-to-many column="id_tag" class="Tag" />
+		</set>
+		<set name="attributeSelections" table="shop_attribute" order-by="id_attribute,id_val" lazy="false" fetch="join" batch-size="100">
+			<key column="id_shop" />
+			<composite-element class="Shop$AttributeSelection">
+				<property name="attributeId" formula="id_attribute" insert="false" update="false" access="field" />
+				<property name="valueId" formula="id_val" insert="false" update="false" access="field" />
+				<many-to-one name="attribute" column="id_attribute" class="Attribute" access="field" />
+				<many-to-one name="value" column="id_val" class="AttributeValue" access="field" />
+			</composite-element>
+		</set>
+
+	</class>
+</hibernate-mapping>

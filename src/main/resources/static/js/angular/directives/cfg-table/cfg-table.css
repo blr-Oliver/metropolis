@@ -1,0 +1,209 @@
+.cfg-table th.cfg-header {
+	text-align: center;
+	white-space: nowrap;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.cfg-table th.sortable {
+	cursor: pointer;
+}
+
+.cfg-table th.sortable div {
+	padding-right: 18px;
+	position: relative;
+}
+
+.cfg-table th.sortable div:after, .cfg-table th.sortable div:before {
+	content: "";
+	border-width: 0 4px 4px;
+	border-style: solid;
+	border-color: #000 transparent;
+	visibility: visible;
+	right: 8px;
+	top: 50%;
+	position: absolute;
+	opacity: .3;
+	margin-top: -4px;
+}
+
+.cfg-table th.sortable div:before {
+	margin-top: 2px;
+	border-bottom: none;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid #000;
+}
+
+.cfg-table th.sortable div:hover:after, .cfg-table th.sortable div:hover:before {
+	opacity: 1;
+	visibility: visible;
+}
+
+.cfg-table th.sortable.sort-desc, .cfg-table th.sortable.sort-asc {
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.cfg-table th.sortable.sort-desc div:after, .cfg-table th.sortable.sort-asc div:after {
+	margin-top: -2px;
+}
+
+.cfg-table th.sortable.sort-desc div:before, .cfg-table th.sortable.sort-asc div:before {
+	visibility: hidden;
+}
+
+.cfg-table th.sortable.sort-asc div:after, .cfg-table th.sortable.sort-asc div:hover:after {
+	visibility: visible;
+	filter: alpha(opacity = 60);
+	-khtml-opacity: 0.6;
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.cfg-table th.sortable.sort-desc div:after {
+	border-bottom: none;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid #000;
+	visibility: visible;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	filter: alpha(opacity = 60);
+	-khtml-opacity: 0.6;
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.cfg-table th.filter .input-filter {
+	margin: 0;
+	display: block;
+	width: 100%;
+	min-height: 30px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cfg-table+.pagination {
+	margin-top: 0;
+}
+
+.cfg-table th.sortable.sort-primary div:after, .cfg-table th.sortable.sort-primary div:before {
+	border-color: #c00 transparent;
+}
+
+.btn-group span.pd-killer {
+	display: none;
+}
+
+.cfg-table-filter.collapse.in {
+	display: table-row-group;
+}
+
+.cfg-table-filter .filter-indicator-bar th {
+	padding: 0;
+}
+
+.cfg-table-filter .filter-indicator {
+	height: 1em;
+}
+
+.cfg-table-filter .filter-indicator, .cfg-table-filter button.filter-control, .cfg-header i.fa-filter {
+	background-color: inherit;
+	transition: all .3s ease;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+}
+
+.cfg-table-filter .filter-indicator.enabled, .cfg-table-filter button.filter-control {
+	background-color: #eee;
+	cursor: pointer;
+	border-width: 0;
+}
+
+.cfg-table-filter .filter-indicator.enabled:hover, .cfg-table-filter button.filter-control:hover {
+	background-color: #ddd;
+}
+
+.cfg-table-filter .filter-indicator.enabled.active {
+	background-color: #6bafbd;
+}
+
+.cfg-table .cfg-table-filter>tr, .cfg-table .cfg-table-filter>tr>th, .cfg-table .cfg-table-filter>tr>td {
+	padding: 0;
+	border-top-width: 0;
+	border-bottom-width: 0;
+}
+
+.cfg-table-filter table.filter-area {
+	width: 100%;
+	border-top: 1px solid #6bafbd;
+}
+
+.cfg-table-filter td.filter-control {
+	width: 1em;
+}
+
+.cfg-table-filter button.filter-control {
+	width: 100%;
+	height: 100%;
+}
+
+.cfg-header i.fa-filter.enabled {
+	color: #c00;
+}
+
+.cfg-header i.fa-filter.active, .cfg-header i.fa-filter.enabled.active {
+	color: #6bafbd;
+}
+
+@media only screen and (max-width: 800px) {
+	.cfg-table-responsive {
+		border-bottom: 1px solid #999999;
+	}
+	.cfg-table-responsive tr {
+		border-top: 1px solid #999999;
+		border-left: 1px solid #999999;
+		border-right: 1px solid #999999;
+	}
+	.cfg-table-responsive td:before {
+		position: absolute;
+		padding: 8px;
+		left: 0;
+		top: 0;
+		width: 50%;
+		white-space: nowrap;
+		text-align: left;
+		font-weight: bold;
+	}
+	.cfg-table-responsive thead tr th {
+		text-align: left;
+	}
+	.cfg-table-responsive thead tr.cfg-table-filters th {
+		padding: 0;
+	}
+	.cfg-table-responsive thead tr.cfg-table-filters th form>div {
+		padding: 8px;
+	}
+	.cfg-table-responsive td {
+		border: none;
+		border-bottom: 1px solid #eeeeee;
+		position: relative;
+		padding-left: 50%;
+		white-space: normal;
+		text-align: left;
+	}
+	.cfg-table-responsive td:before {
+		content: attr(data-title-text);
+	}
+	.cfg-table-responsive, .cfg-table-responsive thead, .cfg-table-responsive tbody, .cfg-table-responsive th, .cfg-table-responsive td, .cfg-table-responsive tr {
+		display: block;
+	}
+}

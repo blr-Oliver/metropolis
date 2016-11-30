@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+	<class name="Category" table="category" proxy="ICategory" batch-size="10">
+		<id name="id" column="id" unsaved-value="null" access="field">
+			<generator class="identity" />
+		</id>
+		<property name="displayName" column="display_name" length="200" />
+		<property name="scopeDisplayName" column="scope_display_name" length="150" />
+		<property name="elementDisplayName" column="element_display_name" length="200" />
+		<property name="parentId" column="id_parent" insert="false" update="false" access="field" />
+
+		<many-to-one name="parent" column="id_parent" not-null="false" class="Category" lazy="proxy" fetch="join" />
+		<set name="children" table="category" order-by="scope_display_name" lazy="true" fetch="select" batch-size="10">
+			<key column="id_parent" />
+			<one-to-many class="Category" />
+		</set>
+		<set name="tags" table="category_tag" lazy="true" fetch="select" batch-size="20">
+			<key column="id_category" />
+			<many-to-many column="id_tag" class="Tag" />
+		</set>
+		<set name="attributes" table="category_attribute" lazy="true" fetch="select" batch-size="5">
+			<key column="id_category" />
+			<many-to-many column="id_attribute" class="Attribute" />
+		</set>
+	</class>
+</hibernate-mapping>

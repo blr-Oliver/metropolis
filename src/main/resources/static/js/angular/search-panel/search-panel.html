@@ -1,0 +1,64 @@
+<div id="categoryNode">
+	<div ng-class="node.selectedChild ? 'checkbox' : 'radio'" ng-switch="node.selectedChild ? 'checkbox' : 'radio'">
+		<input ng-switch-when="radio" ng-if="traversable" type="radio" ng-attr-name="c{{level}}" ng-attr-id="c{{node.id}}" ng-value="node.id" ng-model="node.parent.selectedChild" ng-keydown="handleKeydown($event)" />
+		<input ng-switch-when="radio" ng-if="!traversable"type="radio" ng-attr-name="c{{level}}" ng-attr-id="c{{node.id}}" ng-value="node.id" ng-model="node.parent.selectedChild" ng-keydown="handleKeydown($event)" tabindex="-1"/>
+		<input ng-switch-when="checkbox" ng-if="traversable" type="checkbox" ng-attr-name="c{{level}}" ng-attr-id="c{{node.id}}" ng-value="node.id" ng-model="node.selected" ng-keydown="handleKeydown($event)" />
+		<input ng-switch-when="checkbox" ng-if="!traversable" type="checkbox" ng-attr-name="c{{level}}" ng-attr-id="c{{node.id}}" ng-value="node.id" ng-model="node.selected" ng-keydown="handleKeydown($event)" tabindex="-1"/>
+		<label ng-attr-for="c{{node.id}}" ng-bind="node.scopeDisplayName"></label>
+	</div>
+	<ul class="list-unstyled list-leveled" ng-if="node.children.length && (node.parent.selectedChild == node.id)">
+		<li ng-if="!node.sChild().selectedChild" ng-repeat="child in node.children"><category-node node="child" level="level + 1" traversable="$first" /></li>
+		<li ng-if="node.sChild().selectedChild"><category-node node="node.sChild()" level="level + 1" traversable="$first" /></li>
+	</ul>
+</div>
+<div id="categoryTree">
+	<ul class="list-unstyled list-leveled" ng-show="root.children.length">
+		<li ng-if="!root.sChild().selectedChild" ng-repeat="child in root.children"><category-node node="child" level="1" traversable="$first" /></li>
+		<li ng-if="root.sChild().selectedChild"><category-node node="root.sChild()" level="1" traversable="true" /></li>
+	</ul>
+</div>
+<div id="shopList">
+	<shop-item ng-repeat="item in items" item="item"/>
+	<div ng-if="shopList.pagination.total() > shopList.pagination.count()">
+		<ul class="pagination">
+			<li ng-class="{'disabled': !page.active}" ng-repeat="page in shopList.pagination.pages" ng-switch="page.type">
+				<a ng-switch-when="prev" ng-click="shopList.pagination.page(page.number)" href="">&laquo;</a>
+				<a ng-switch-when="first" ng-click="shopList.pagination.page(page.number)" href="">{{page.number}}</a>
+				<a ng-switch-when="page" ng-click="shopList.pagination.page(page.number)" href="">{{page.number}}</a>
+				<a ng-switch-when="more" ng-click="shopList.pagination.page(page.number)" href="">&#8230;</a>
+				<a ng-switch-when="last" ng-click="shopList.pagination.page(page.number)" href="">{{page.number}}</a>
+				<a ng-switch-when="next" ng-click="shopList.pagination.page(page.number)" href="">&raquo;</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div id="shopItem">
+	<div class="shop-item">
+		<h4 class="col-xs-12">
+			{{item.meta.name}} <small ng-if="item.data" ng-bind="item.data.category.elementDisplayName"></small>
+		</h4>
+		<div class="logo col-xs-4">
+			<img src="/img/logo_placeholder.png" alt="Logo" />
+		</div>
+		<div class="col-xs-8">
+			<p>{{item.data.shortDescription}}</p>
+			<div ng-switch="item.data.tags.length > 0">
+				<ul ng-switch-when="true">
+					<li ng-repeat="tag in item.data.tags" class="badge tag" ng-bind="tag.displayName" />
+				</ul>
+				<span ng-switch-default>No tags</span>
+			</div>
+			<div ng-switch="item.data.attributes.length > 0">
+				<ul ng-switch-when="true" class="attribute-list list-unstyled row">
+					<li ng-repeat="attribute in item.data.attributes" class="attribute col-xs-12 col-md-6"><i class="fa fa-check"></i> {{attribute.displayName}}
+						<ul ng-if="attribute.values.length > 0" class="choice-list list-unstyled">
+							<li ng-repeat="value in attribute.values" ng-bind="value.displayName" />
+						</ul></li>
+					<li class="clearfix" />
+				</ul>
+				<span ng-switch-default>No attributes</span>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

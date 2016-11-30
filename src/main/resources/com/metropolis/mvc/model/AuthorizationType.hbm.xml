@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+	<class name="AuthorizationType" table="oauth2" mutable="false" batch-size="5">
+		<id name="id" column="id" unsaved-value="null" access="field">
+			<generator class="identity" />
+		</id>
+
+		<property name="name" column="name" length="30" unique="true" access="field" />
+		<property name="authorizeURL" column="authorize_url" length="500" access="field" />
+		<property name="tokenURL" column="token_url" length="500" access="field" />
+		<property name="clientId" column="client_id" length="128" access="field" />
+		<property name="clientSecret" column="client_secret" length="128" access="field" />
+		<property name="scope" column="scope" length="1000" access="field" />
+		<property name="query" column="query" length="1000" access="field" />
+
+	</class>
+</hibernate-mapping>

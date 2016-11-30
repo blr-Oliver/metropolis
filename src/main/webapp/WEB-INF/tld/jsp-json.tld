@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="java.sun.com/xml/ns/javaee" xmlns:xsi="w3.org/2001/XMLSchema-instance" xsi:schemaLocation="java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+	<tlib-version>2.1</tlib-version>
+	<uri>http://metropolis.by/xml/ns/j</uri>
+
+	<function>
+		<name>json</name>
+		<function-class>com.metropolis.util.JspJsonTaglib</function-class>
+		<function-signature>
+			java.lang.String json(java.lang.Object)
+		</function-signature>
+	</function>
+	<function>
+		<name>jsonView</name>
+		<function-class>com.metropolis.util.JspJsonTaglib</function-class>
+		<function-signature>
+			java.lang.String jsonWithView(java.lang.Object, java.lang.String)
+		</function-signature>
+	</function>
+</taglib>

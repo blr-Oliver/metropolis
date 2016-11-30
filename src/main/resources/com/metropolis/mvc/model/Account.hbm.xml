@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+	<class name="Account" table="account" proxy="IAccount" batch-size="5">
+		<id name="id" column="id" unsaved-value="null" access="field">
+			<generator class="identity" />
+		</id>
+		<property name="userId" column="id_user" insert="false" update="false" not-null="true" access="field" />
+		<property name="clientId" column="client_id" not-null="true" length="128" />
+		<property name="password" column="password" not-null="false" length="256" />
+
+		<many-to-one name="user" column="id_user" class="User" not-null="true" lazy="false" fetch="join" access="field" />
+		<many-to-one name="type" column="id_auth" class="AuthorizationType" not-null="true" lazy="false" fetch="select" access="field" />
+	</class>
+</hibernate-mapping>

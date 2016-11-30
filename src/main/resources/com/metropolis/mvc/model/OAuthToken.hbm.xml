@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+	<class name="OAuthToken" table="oauth_token">
+		<id name="accountId" column="id_account" />
+		<property name="accessToken" column="access_token" length="1024" not-null="false" />
+		<property name="refreshToken" column="refresh_token" length="1024" not-null="false" />
+		<property name="expiresAt" column="expires_at" not-null="false" />
+	</class>
+</hibernate-mapping>

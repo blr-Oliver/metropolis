@@ -1,0 +1,114 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body, html, body>table#layout {
+	width: 100%;
+	height: 100%;
+}
+
+#layout-main {
+	height: 100%;
+}
+
+.login-container {
+	margin: 2em auto 1em;
+	padding: 0 1em;
+	min-width: 18em;
+	max-width: 24em;
+}
+
+.dropdown-menu>li>.dropdown-content {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+}
+
+.dropdown-content form {
+	padding: 10px 15px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.dropdown-content .form-group:last-child {
+	margin-bottom: 0;
+}
+
+.show-rect * {
+	background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+.logo>img {
+	max-width: 100%;
+}
+
+.shop-item .logo {
+	min-height: 80px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.shop-item li.attribute {
+	display: inline-block;
+}
+
+.badge.tag {
+	cursor: pointer;
+	text-transform: lowercase;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.tag>input[type="checkbox"] {
+	display: none;
+}
+
+.tag>input:checked+label.tag.badge {
+	background-color: olive;
+}
+
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#search-options>.panel {
+	padding: 10px;
+}
+
+#search-options .form-group:last-child {
+	margin-bottom: 0;
+}
+
+#search-options a[data-toggle="collapse"] i.fa.fa-chevron-down {
+	transition-property: transform;
+	transition-duration: 0.2s;
+}
+
+#search-options a[data-toggle="collapse"].collapsed i.fa.fa-chevron-down
+	{
+	transform: rotate(-90deg);
+}
+
+.list-leveled {
+	padding-left: 15px;
+}
+
+.form-control:focus+.input-group-btn button {
+	z-index: auto;
+}
+
+.switchable {
+	display: none;
+}

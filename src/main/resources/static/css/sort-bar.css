@@ -1,0 +1,61 @@
+.sort-bar-wrap {
+	position: relative;
+	padding-left: 32px;
+}
+
+.sort-bar {
+	position: absolute;
+	-webkit-transform: rotate(-90deg) translateX(-100%);
+	-webkit-transform-origin: top left;
+	-ms-transform: rotate(-90deg) translateX(-100%);
+	-ms-transform-origin: top left;
+	transform: rotate(-90deg) translateX(-100%);
+	transform-origin: top left;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 2px 0;
+	display: table;
+	border-collapse: separate;
+	direction: rtl;
+}
+
+li.sort-marker {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+	padding: 0 2px 0;
+	cursor: pointer;
+	border-style: inset outset;
+	border-radius: 12px;
+	border-width: 0;
+	border-color: #eee;
+	-webkit-transition: background-color 0.4s;
+	transition: background-color 0.4s;
+}
+
+li.sort-marker span.badge {
+	border-width: 2px;
+	border-style: outset inset;
+	border-color: #eee;
+	margin: 1px 0;
+	-webkit-transition-property: margin-left, margin-right;
+	-webkit-transition-duration: 0.4s;
+	transition-property: margin-left, margin-right;
+	transition-duration: 0.4s;
+	background-color: #eee;
+	color: #666;
+}
+
+li.sort-marker.desc, li.sort-marker.asc {
+	background-color: #ddd; /*darker 10%*/
+	border-width: 2px;
+}
+
+li.sort-marker.desc span.badge {
+	margin-left: 1.5em;
+}
+
+li.sort-marker.asc span.badge {
+	margin-right: 1.5em;
+}

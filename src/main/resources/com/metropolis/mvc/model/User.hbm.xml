@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+	<class name="User" table="user">
+		<id name="id" column="id" unsaved-value="null" access="field">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="name" not-null="true" length="250" />
+		<property name="email" column="email" not-null="false" length="250" />
+		<property name="enabled" column="enabled" not-null="true" />
+		<property name="locked" column="locked" not-null="true" />
+
+		<map name="accounts" lazy="true">
+			<key column="id_user" />
+			<map-key column="id_auth" type="java.lang.Integer" />
+			<one-to-many class="Account" />
+		</map>
+
+	</class>
+</hibernate-mapping>

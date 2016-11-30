@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.metropolis.mvc.model">
+	<class name="Attribute" table="attribute" proxy="IAttribute" batch-size="10">
+		<id name="id" column="id" unsaved-value="null" access="field">
+			<generator class="identity" />
+		</id>
+		<property name="displayName" column="display_name" length="200" />
+		<property name="type" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.metropolis.mvc.model.IAttribute$Type</param>
+				<param name="useNamed">false</param>
+			</type>
+		</property>
+		<list name="choices" table="attribute_choice" fetch="join" lazy="false" batch-size="10">
+			<key column="id_attribute" />
+			<list-index column="ordinal" />
+			<many-to-many column="id_value" class="AttributeValue" fetch="join" />
+		</list>
+	</class>
+</hibernate-mapping>
